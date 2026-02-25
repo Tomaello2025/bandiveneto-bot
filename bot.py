@@ -4,7 +4,7 @@ import json
 import os
 from telegram import Bot
 
-TOKEN = os.environ["TELEGRAM_TOKEN"]
+TOKEN = os.environ["8325550620:AAGREZkPdIN_pzCOGeI_GkJUWBiVZBuhGrk"]
 CHANNEL_ID = "@bandiveneto_bot"
 
 URL = "https://bandi.regione.veneto.it/Public/Elenco?Tipo=1"
