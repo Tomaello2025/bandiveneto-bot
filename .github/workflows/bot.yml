@@ -1,0 +1,24 @@
+name: Controllo bandi
+
+on:
+  schedule:
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Installa librerie
+      run: pip install requests beautifulsoup4 python-telegram-bot
+
+    - name: Avvia bot
+      run: python bot.py
