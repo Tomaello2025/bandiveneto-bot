@@ -10,6 +10,7 @@ CHANNEL_ID = "-1003752206217"
 URL = "https://bandi.regione.veneto.it/Public/Elenco?Tipo=1"
 
 bot = Bot(token=TOKEN)
+print("Script partito correttamente")  # DEBUG: conferma che lo script parte
 
 
 def get_bandi():
@@ -37,8 +38,10 @@ def save_new(bandi):
         json.dump(bandi, f)
 
 def main():
-    vecchi = load_old()
-    nuovi = get_bandi()
+ vecchi = load_old()
+nuovi = get_bandi()
+
+print("Nuovi bandi trovati:", nuovi)  # DEBUG: mostra i bandi letti
 
     for b in nuovi:
         if b not in vecchi:
