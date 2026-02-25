@@ -5,13 +5,12 @@ import os
 from telegram import Bot
 
 TOKEN = os.environ["TELEGRAM_TOKEN"]
-CHANNEL_ID = "-1003752206217"
+CHANNEL_ID = -1003752206217  # ID numerico senza @ per canale privato
 
 URL = "https://bandi.regione.veneto.it/Public/Elenco?Tipo=1"
 
 bot = Bot(token=TOKEN)
 print("Script partito correttamente")  # DEBUG: conferma che lo script parte
-
 
 def get_bandi():
     r = requests.get(URL)
@@ -38,10 +37,11 @@ def save_new(bandi):
         json.dump(bandi, f)
 
 def main():
- vecchi = load_old()
-nuovi = get_bandi()
+    vecchi = load_old()
+    nuovi = get_bandi()
 
-print("Nuovi bandi trovati:", nuovi)  # DEBUG: mostra i bandi letti
+    print("Nuovi bandi trovati:", nuovi)  # DEBUG: mostra i bandi letti
+    bot.send_message(chat_id=CHANNEL_ID, text="🚀 Test bot arrivato!")  # TEST
 
     for b in nuovi:
         if b not in vecchi:
