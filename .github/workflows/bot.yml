@@ -2,25 +2,25 @@ name: Controllo bandi
 
 on:
   schedule:
-    - cron: '0 6 * * *'
-  workflow_dispatch:
+    - cron: '0 6 * * *'   # ogni giorno alle 08:00 ora italiana
+  workflow_dispatch:       # permette di lanciare manualmente
 
 jobs:
   run:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-    - name: Setup Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.11'
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
 
-    - name: Installa librerie
-      run: pip install requests beautifulsoup4 python-telegram-bot
+      - name: Installa librerie
+        run: pip install requests beautifulsoup4 "python-telegram-bot==20.5"
 
-    - name: Avvia bot
-  run: python bot.py
-  env:
-    TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+      - name: Avvia bot
+        run: python bot.py
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
